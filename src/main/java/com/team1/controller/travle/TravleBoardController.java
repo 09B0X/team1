@@ -17,6 +17,23 @@ public class TravleBoardController {
 	// 7. 팀원1은 github / master에서 food 브랜치 merge 
 	// 8. 팀원1은 팀장 master 에 pull request
 	
+	// 주의: 자주 풀 리퀘하면 팀장이 많은 방해를 받으니
+	//      1주일에 날짜 정해서 1~2회 하시면 되겠어요.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	// 새로운 컨트롤러 작성
 

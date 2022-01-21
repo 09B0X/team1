@@ -22,7 +22,7 @@
 	});
 </script>
 
-<title>Insert title here</title>
+<title>Movie</title>
 <style>
 body {
 	background-color: black;

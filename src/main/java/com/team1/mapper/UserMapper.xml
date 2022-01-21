@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mapper.UserMapper">
+	<select id="select" resultType="com.team1.domain.UserVO">
+		SELECT
+			id,
+			password,
+			nickName,
+			email
+		FROM
+			User
+		WHERE
+			id = #{id}
+	</select>
+
+	<insert id="insert">
+		INSERT INTO
+			User (id, password, nickName, email)
+		VALUES
+			(#{id}, #{password}, #{nickName}, #{email})
+	</insert>
+	
+	<update id="update">
+		UPDATE
+			User
+		SET
+			password = #{password},
+			email = #{email},
+			nickName = #{nickName}
+		WHERE
+			id = #{id}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM User WHERE id = #{id}
+	</delete>
+	
+	<select id="selectByNickName" resultType="com.team1.domain.UserVO">
+		SELECT
+			id,
+			password,
+			nickName,
+			email
+		FROM
+			User
+		WHERE
+			nickName = #{nickName}
+	</select>
+</mapper>

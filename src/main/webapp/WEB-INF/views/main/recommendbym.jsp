@@ -137,6 +137,33 @@ a:link{
 			<div class="col" id="title">
 				<h1>영화 목록</h1>
 			</div>
+			<div>
+				<li>
+					<select onchange="if(this.value) location.href=(this.value);">
+					<option value="">장르 선택
+					<option value="recommendbym?kate=sf">sf
+					<option value="recommendbym?kate=가족">가족
+					<option value="recommendbym?kate=도서 원작">도서 원작
+					<option value="recommendbym?kate=드라마">드라마
+					<option value="recommendbym?kate=모험">모험
+					<option value="recommendbym?kate=미국">미국
+					<option value="recommendbym?kate=밀리터리">밀리터리
+					<option value="recommendbym?kate=서부">서부
+
+</select>
+				</li>
+				<li>
+				<a href="recommendbyd?id=${id }">최신 추천</a>
+				</li>
+				
+				<li>
+				<a href="recommendbym?kate=sf">장르로 추천</a>
+				</li>
+				
+				<li>
+				<a href="recommendbya?id=${id }">배우로 추천</a>
+				</li>
+			</div>
 		</div>
 
 		<div class="row row-cols-1 row-cols-md-5">

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mapper.ActorMapper">
+	<select id="getActorList" resultType="com.team1.domain.ActorVO">
+		SELECT
+			a.id,
+			a.name,
+			a.Birth,
+			p.PhotoName
+		FROM Actor a LEFT JOIN Photo p
+		ON a.id=p.ActorId
+		
+	</select>
+	<select id="read" resultType="com.team1.domain.ActorVO">
+		SELECT
+			a.id,
+			a.name,
+			a.Birth,
+			p.PhotoName
+		FROM Actor a LEFT JOIN Photo p
+		ON a.id=p.ActorId
+		Where a.id = #{id}
+	</select>
+	<select id="getCast" resultType="com.team1.domain.CastVO">
+		SELECT
+			m.title,
+			c.movieId
+		FROM Movie m
+		LEFT JOIN Cast c
+		ON m.id=c.movieId
+		Where 
+		c.actorId = #{id}
+	</select>
+
+</mapper>

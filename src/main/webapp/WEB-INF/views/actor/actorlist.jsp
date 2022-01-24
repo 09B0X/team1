@@ -1,51 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/icon/css/all.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
 	$(document).ready(function() {
-		$(".card").on('click', function() {
-			var getId = $(this).attr('id');
+		$("#searchbutton").on('click', function() {
+			var search = $("#search").val();
 			$(location).attr("href", "get?id=" + getId);
 
 		});
 	});
 </script>
 
-<title>Insert title here</title>
 <style>
-body {
-	background-color: black;
-}
-
-#title {
-	color: white;
-}
-
-.card {
-	background-color: transparent;
-}
-
-.card:hover {
-	cursor: pointer;
-	background-color: white;
-}
-
-
-.card-group {
-    overflow-x: auto;
-    white-space: nowrap;
-}
-a:link{
+	body{
+	 background-color: black;	
+	}
+	a:link{
 		color:white;
 	}
 	a:visited{
@@ -87,10 +70,10 @@ a:link{
 		margin-left:100px;
 	}
 </style>
+<title>Insert title here</title>
 </head>
 <body>
-<div class="menu">
-	<nav class="navbar navbar-expand-lg">
+	<div class="menu">
 		<ul class="nav-item active">
 			<li class="MR nav-item active">
 				<a class="nav-link" href="../main/recommend">
@@ -130,64 +113,52 @@ a:link{
 				
 		</ul>
 		</div>
-	<b:navBar></b:navBar>
-	
-	<div class="container">
-		<div class="row">
-			<div class="col" id="title">
-				<h1>영화 목록</h1>
-			</div>
-		</div>
+  <b:navBar></b:navBar>
 
-		<div class="row row-cols-1 row-cols-md-5">
-			<c:forEach items="${movieList }" var="movie">
-				<div class="col mb-4">
-					<div class="card" id="${movie.id }">
-						<img src="${staticUrl }/ThumbNail/${movie.thumbNail }">
-						<%-- <div class="card-body">
-							<h5 class="card-title">${movie.title }</h5>
-							<p class="card-text">
-								<small class="text-muted">Last updated 3 mins ago</small>
-							</p>
-						</div> --%>
-					</div>
-				</div>
-			</c:forEach>
-		</div>
-
-	</div>
-	
-	<c:if test="${not empty result }">
-		<div class="modal" tabindex="-1" id="modal1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">처리 결과</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>${result }</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</c:if>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-
-	<script>
-		$(document).ready(function() {
-			if (history.state == null) {
-				$("#modal1").modal('show');
-				history.replaceState({}, null);
-			}
-		});
-	</script>
+  <!-- .container>.row>.col>h1{게시물 목록} -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>배우 목록</h1>
+        <!-- table.table>thead>tr>th*4^^tbody -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>이름</th>
+              <th>생일</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <c:forEach items="${list }" var="actor">
+              <tr>
+                <td><img src="${staticUrl}/Actor/${actor.photoName}"width=100 height=100></td>
+                <td class="name">
+                  <a href="actor?id=${actor.id}">
+                    <c:out  value="${actor.name }" />
+                  </a>
+                  <!-- 
+                  <c:if test="${board.replyCount > 0 }">
+                    <i class="far fa-comments"></i> ${board.replyCount }
+                  </c:if>
+                  <c:out value="${board.nickName }" />
+                             -->
+               <td class="name">
+               		<fmt:formatDate value="${actor.birth }" pattern="yyyy.MM.dd" />
+               </td>
+               <td>
+               	
+               	
+               </td>              
+              </tr>
+               
+            </c:forEach>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+ 
 </body>
 </html>

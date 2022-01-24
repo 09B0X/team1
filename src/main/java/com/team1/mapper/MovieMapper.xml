@@ -25,6 +25,8 @@
 			m.id,
 			m.title,
 			m.content,
+			m.platformimg,
+			m.platform,
 			t.thumbName thumbNail
 		FROM
 			Movie m
@@ -58,5 +60,13 @@
 			Kategorie k ON m.id = k.movieId
 		WHERE
 			k.movieId = #{movieId}
+	</select>
+	<select id="getPlatform" resultType="String">
+		SELECT 
+			m.Platform 
+		FROM 
+			Movie m
+		WHERE
+			m.id = #{movieId}
 	</select>
 </mapper>

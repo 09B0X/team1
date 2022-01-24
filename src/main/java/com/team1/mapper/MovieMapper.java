@@ -13,4 +13,6 @@ public interface MovieMapper {
 	public List<MovieVO> getList();
 
 	public String[] getKategorie(Integer id);
+
+	public String[] getPlatform(Integer id);
 }

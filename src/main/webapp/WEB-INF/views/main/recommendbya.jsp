@@ -137,6 +137,22 @@ a:link{
 			<div class="col" id="title">
 				<h1>영화 목록</h1>
 			</div>
+			<div>
+				<li>
+				<a href="recommendbyd?id=${id }">최신 추천</a>
+				</li>
+				
+				<li>
+				<a href="recommendbym?kate=sf">장르로 추천</a>
+				</li>
+				
+				<li>
+				<a href="recommendbya?id=${id }">배우로 추천</a>
+				</li>
+			</div>
+			<div>
+				<a href=""></a>
+			</div>
 		</div>
 
 		<div class="row row-cols-1 row-cols-md-5">

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.team1.mapper.MainMapper">
+<select id="getList" resultType="com.team1.domain.MovieVO">
+		SELECT
+			m.id,
+			m.title,
+			t.thumbName thumbNail
+		FROM
+			Movie m
+				LEFT JOIN 
+			ThumbNail t 
+				ON
+			m.id = t.movieId
+		ORDER BY
+			id ASC
+	</select>
+
+<select id="getListd" resultType="com.team1.domain.MovieVO">
+		SELECT
+			m.id,
+			m.title,
+			t.thumbName thumbNail
+		FROM
+			Movie m
+				LEFT JOIN 
+			ThumbNail t 
+				ON
+			m.id = t.movieId
+		ORDER BY
+			pre desc;
+	</select>
+	<select id="getar" resultType="com.team1.domain.ActoridVO">
+		SELECT
+			actorid
+		FROM
+			ARating
+			where
+			userid=#{id}
+	</select>
+		<select id="getmid" resultType="com.team1.domain.MovieidVO">
+		SELECT
+			movieId
+		FROM
+			Cast
+		where
+			actorid=#{id}
+	</select>
+	<select id="getListm" resultType="com.team1.domain.MovieVO">
+		SELECT
+			m.id,
+            m.title,
+            m.content,
+			m.platformimg,
+            m.platform,
+            t.thumbName thumbNail
+FROM 
+			Movie m
+				LEFT JOIN
+			ThumbNail t
+				ON
+			m.id=t.movieId
+				LEFT JOIN
+			Kategorie k
+				ON
+			m.id=k.movieId
+			
+where 
+	k.kate=#{kate};
+
+	</select>
+	<select id="getLista" resultType="com.team1.domain.MovieVO">
+		SELECT DISTINCT
+			m.id,
+            m.title,
+            m.content,
+			m.platformimg,
+            m.platform,
+            t.thumbName thumbNail
+		FROM 
+			Movie m
+				LEFT JOIN
+			ThumbNail t
+				ON
+			m.id=t.movieId
+				LEFT JOIN
+			Cast c
+				ON
+			m.id=c.movieId
+				LEFT JOIN
+			ARating a
+				ON
+			c.actorId=a.actorid
+            
+		where 
+			a.userid=#{userid};
+	</select>
+	<select id="read" resultType="com.team1.domain.MovieVO">
+		SELECT
+			m.id,
+			m.title,
+			m.content,
+			m.platformimg,
+			m.platform,
+			t.thumbName thumbNail
+		FROM
+			Movie m
+				LEFT JOIN 
+			ThumbNail t 
+				ON
+			m.id = t.movieId
+		WHERE
+			m.id = #{movieId}
+	</select>
+		<select id="readm" resultType="com.team1.domain.MovieVO">
+		SELECT
+			m.id,
+			m.title,
+			m.content,
+			m.platformimg,
+			m.platform,
+			t.thumbName thumbNail
+		FROM
+			Movie m
+				LEFT JOIN 
+			ThumbNail t 
+				ON
+			m.id = t.movieId
+		WHERE
+			m.id = #{mid}
+	</select>
+	
+	<select id="getActor" resultType="String">
+		SELECT
+			a.name
+		FROM
+			Cast c
+				JOIN 
+			Actor a ON c.actorId = a.id
+				JOIN 
+			Movie m ON c.movieId = m.id
+		WHERE
+			c.movieId = #{movieId}
+	</select>
+	
+	<select id="getKategorie" resultType="String">
+		SELECT 
+			k.kate Kategorie
+		FROM 
+			Movie m
+				JOIN 
+			Kategorie k ON m.id = k.movieId
+		WHERE
+			k.movieId = #{movieId}
+	</select>
+	<select id="getPlatform" resultType="String">
+		SELECT 
+			m.Platform 
+		FROM 
+			Movie m
+		WHERE
+			m.id = #{movieId}
+	</select>
+</mapper>

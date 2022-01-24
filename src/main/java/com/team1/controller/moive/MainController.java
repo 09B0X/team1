@@ -9,21 +9,44 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.team1.domain.ActoridVO;
 import com.team1.domain.MovieVO;
+import com.team1.domain.MovieidVO;
+import com.team1.service.MainService;
 import com.team1.service.MovieService;
 
 import lombok.Setter;
 
 @Controller
-@RequestMapping("/movie")
-public class MovieController {
+@RequestMapping("/main")
+public class MainController {
 
 	@Setter(onMethod_ = @Autowired)
-	private MovieService service;
-	
-	@GetMapping("/list")
+	private MainService service;
+
+	@GetMapping("/recommend")
 	public void list(Model model) {
 		List<MovieVO> movieList = service.list();
+		
+		model.addAttribute("movieList", movieList);
+	
+	}
+	@GetMapping("/recommendbym")
+	public void listm(@RequestParam("kate") String kate,Model model) {
+		List<MovieVO> movieList = service.listm(kate);
+		
+		model.addAttribute("movieList", movieList);
+	
+	}
+	@GetMapping("/recommendbya")
+	public void lista(@RequestParam("id") Integer userid,Model model) {
+		List<MovieVO> movieList = service.lista(userid);
+		
+		model.addAttribute("movieList", movieList);
+	}
+	@GetMapping("/recommendbyd")
+	public void listd(@RequestParam("id") Integer id,Model model) {
+		List<MovieVO> movieList = service.listd();
 		
 		model.addAttribute("movieList", movieList);
 	}

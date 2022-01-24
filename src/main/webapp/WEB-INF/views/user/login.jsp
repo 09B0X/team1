@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="b" tagdir="/WEB-INF/tags/movie"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,10 +11,96 @@
 
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resource/css/icon/css/all.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<style>
+	body{
+	 background-color: black;	
+	}
+a:link{
+		color:white;
+	}
+	a:visited{
+		color:white;
+		display:inline;
+	}
+	ul{
+		display:inline-block;
+	}
+	li{
+		list-style-type: none;
+		display:inline-block;
+		color:black;
+	}
+	fmt{
+		color:white;
+	}
+	th{
+		color:white;
+	}
+	.nav-link{
+		color:black;
+	}
+	.container{
+		color:white;
+	}
+	.name{
+		color:white;
+	}
+	.menu{
+		display:flex;
+		justify-content:center;
+	}
+	.MR{
+		margin-right:350px;
+		margin-left:00px;
+	}
+	.user{
+		margin-left:100px;
+	}
+</style>
 
-<title>Login</title>
+<title>Insert title here</title>
 </head>
-<body>
+<body><div class="menu">
+	<nav class="navbar navbar-expand-lg">
+		<ul class="nav-item active">
+			<li class="MR nav-item active">
+				<a class="nav-link" href="../main/recommend">
+				영화 추천
+				</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="../movie/list">
+				영화 목록
+				</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="../actor/actorlist">
+				배우 목록
+				</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="../main/recommend">
+				평론
+				</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="../main/recommend">
+				자유게시판
+				</a>
+			</li>
+			<li class="user nav-item active">
+				<a class="nav-link" href="../user/signup">
+				회원가입
+				</a>
+			</li>
+				<li class="nav-item active">
+				<a class="nav-link" href="../user/login">
+				로그인
+				</a>
+			</li>
+				
+		</ul>
+		</div>
 <b:navBar></b:navBar>
 <!-- .container>.row>.col>h1{로그인} -->
 <div class="container">

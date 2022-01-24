@@ -8,4 +8,7 @@ public class MovieVO {
 	private String title;
 	private String content;
 	private String thumbNail;
+	private String platformimg;
+	private String platform;
+	private Integer userid;
 }
